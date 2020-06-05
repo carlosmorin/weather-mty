@@ -14,17 +14,53 @@ require 'rails_helper'
 
 RSpec.describe "/wather_records", type: :request do
 
-  describe "GET /api/catgories" do
-    it "renders a successful response" do
-      get wather_records_url
-      expect(response).to be_successful
-    end
-  end
+	describe "GET /api/catgories records temp" do
+		it "renders a successful response" do
+			get wather_records_url
+			expect(response).to be_successful
+		end
+	end
 
-	describe "GET /api/index order by some column" do
+	describe "GET /api/index order by created_at: :asc" do
+		it "renders a successful response" do
+			get wather_records_url(sort_by: :created_at, order: :asc)
+			expect(response).to be_successful
+		end
+	end
+	
+	describe "GET /api/index order by created_at: :desc" do
 		it "renders a successful response" do
 			get wather_records_url(sort_by: :created_at, order: :desc)
 			expect(response).to be_successful
 		end
 	end
+
+	describe "GET /api/index order by temp asc" do
+		it "renders a successful response" do
+			get wather_records_url(sort_by: :temp, order: :asc)
+			expect(response).to be_successful
+		end
+	end
+	
+	describe "GET /api/index order by temp desc" do
+		it "renders a successful response" do
+			get wather_records_url(sort_by: :temp, order: :desc)
+			expect(response).to be_successful
+		end
+	end
+
+	describe "GET /api/index get lower record" do
+		it "renders a successful response" do
+			get wather_records_url(find: :lower)
+			expect(response).to be_successful
+		end
+	end
+
+	describe "GET /api/index get highest record" do
+		it "renders a successful response" do
+			get wather_records_url(find: :highest)
+			expect(response).to be_successful
+		end
+	end
+
 end
