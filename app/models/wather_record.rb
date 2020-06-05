@@ -1,0 +1,2 @@
+class WatherRecord < ApplicationRecord
+end
