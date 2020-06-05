@@ -8,5 +8,19 @@ namespace :weather do
 		uri = URI(api_path)
 		response = Net::HTTP.get(uri)
 		response = JSON.parse(response)
+
+		city_code = response["cod"]
+		city_name = response["name"]
+		status = response['weather'][0]['main']
+		description = response['weather'][0]['description']
+		temp = response['main']['temp']
+
+		WatherRecord.create(
+			city_code: city_code,
+			city_name: city_name,
+			status: status,
+			description: description,
+			temp: temp
+		)
   end
 end
