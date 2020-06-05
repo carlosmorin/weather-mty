@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
-  resources :wather_records
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+	scope :api do
+		resources :wather_records, only: %i[index]
+	end
 end
