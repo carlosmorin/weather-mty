@@ -20,4 +20,11 @@ RSpec.describe "/wather_records", type: :request do
       expect(response).to be_successful
     end
   end
+
+	describe "GET /api/index order by some column" do
+		it "renders a successful response" do
+			get wather_records_url(sort_by: :created_at, order: :desc)
+			expect(response).to be_successful
+		end
+	end
 end
